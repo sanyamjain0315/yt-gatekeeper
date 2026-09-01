@@ -7,5 +7,11 @@
       "matches": ["https://www.youtube.com/*"],
       "js": ["Content.js"]
     }
+  ],
+  "web_accessible_resources":[
+    {
+      "resources": ["resources/overlay.html", "resources/overlay.css"],
+      "matches": ["https://www.youtube.com/*"]
+    }
   ]
 }
