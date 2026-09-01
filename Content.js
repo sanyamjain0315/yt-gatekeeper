@@ -26,14 +26,28 @@ async function insert_overlay() {
 
   // Bind event listeners inside the Shadow DOM
   shadowRoot.getElementById("continue-btn").addEventListener("click", () => {
-    container.remove();
+    const time_delta = new Date() - overlay_insert_ts;
+    if (time_delta <= 5000) {
+      let header = shadowRoot.getElementById("header-message");
+      header.innerHTML = "Slow Down";
+
+      let paragraph = shadowRoot.getElementById("para-message");
+      paragraph.innerHTML = "Remember, use must YouTube for work, not as another addiction.";
+
+      overlay_insert_ts = new Date();
+    }
+    else {
+      container.remove();
+    }
   });
 }
 
+let overlay_insert_ts = 0;
 const observer = new MutationObserver((mutations, obs) => {
   const target = document.querySelector('iframe'); // Observing if this element is rendered or not
   if (target) {
     insert_overlay();
+    overlay_insert_ts = new Date();
     obs.disconnect();
   }
 });
