@@ -28,11 +28,20 @@ async function insert_overlay() {
   shadowRoot.getElementById("continue-btn").addEventListener("click", () => {
     const time_delta = new Date() - overlay_insert_ts;
     if (time_delta <= 5000) {
-      let header = shadowRoot.getElementById("header-message");
-      header.innerHTML = "Slow Down";
+      // Hide previous elements
+      let header_message = shadowRoot.getElementById("header-message");
+      header_message.setAttribute("hidden", "hidden");
+      let para_message = shadowRoot.getElementById("para-message");
+      para_message.setAttribute("hidden", "hidden");
+      let button = shadowRoot.getElementById("continue-btn");
+      button.setAttribute("hidden", "hidden");
 
-      let paragraph = shadowRoot.getElementById("para-message");
-      paragraph.innerHTML = "Remember, use must YouTube for work, not as another addiction.";
+      // Unhide warning elements
+      let header_warning = shadowRoot.getElementById("header-warning");
+      header_warning.removeAttribute("hidden");
+      let para_warning = shadowRoot.getElementById("para-warning");
+      para_warning.removeAttribute("hidden");
+      button.removeAttribute("hidden")
 
       overlay_insert_ts = new Date();
     }

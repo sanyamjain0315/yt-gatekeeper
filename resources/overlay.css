@@ -20,18 +20,18 @@
 }
 
 .overlay-content h1 {
-    font-size: 2rem;
+    font-size: 4rem;
     margin-bottom: 10px;
 }
 
 .overlay-content p {
-    font-size: 1.5rem;
+    font-size: 3rem;
     margin-bottom: 30px;
 }
 
 #continue-btn {
     padding: 12px 24px;
-    font-size: 1.2rem;
+    font-size: 2.5rem;
     cursor: pointer;
     background-color: #ff0000;
     color: white;
@@ -60,6 +60,19 @@
 .fade-in-button {
     animation-delay: 2.8s;
 }
+
+.warning-message {
+    color: #ff5e5e; /* Aesthetic red */
+    font-weight: 600;
+    font-size: 2.5rem;
+    display: block;
+    margin-top: 10px;
+
+    /* Animation properties */
+    opacity: 0;
+    animation: fadeIn 0.8s ease forwards;
+}
+
 
 @keyframes fadeIn {
     from {
