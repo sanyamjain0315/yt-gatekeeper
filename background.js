@@ -2,11 +2,12 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   console.log("received event")
   if (message.type === "ACTIVE_SECONDS") {
     processActiveSeconds(message.seconds);
+  } else if (message.type === "RESET_TIME") {
+    processResetTime(message.seconds);
   }
 })
 
 async function processActiveSeconds(additionalSeconds) {
-  console.log("background.js: processing active seconds")
   const data = await chrome.storage.local.get({
     pendingSeconds: 0,
     minutes: 0
@@ -25,5 +26,12 @@ async function processActiveSeconds(additionalSeconds) {
     pendingSeconds: totalPending,
     minutes: newMinutes
   });
-  console.log("updated time storage" + newMinutes + " newMinutes" + pendingSeconds + " pendingSeconds");
+}
+
+async function processResetTime(remainingSeconds) {
+  await chrome.storage.local.set({
+    pendingSeconds: 0,
+    minutes: 0
+  });
+  processActiveSeconds(remainingSeconds)
 }
