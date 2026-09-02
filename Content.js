@@ -1,3 +1,6 @@
+let overlay_insert_ts = null;
+console.log("Content.js");
+
 async function insert_overlay() {
   // Get HTML file URLs
   const htmlUrl = chrome.runtime.getURL("resources/overlay.html");
@@ -22,7 +25,17 @@ async function insert_overlay() {
   shadowRoot.innerHTML = htmlText;
   shadowRoot.appendChild(styleElement);
 
+  // Update the time spent
+  let timespent_span = shadowRoot.getElementById("time-spent");
+  // console.log("Contents.js: getting minutes")
+  let response = await chrome.storage.local.get({ minutes: 0 });
+  // console.log("Contents.js: got minutes " + response )
+  const hours = Math.floor(response.minutes / 60);
+  const minutes = response.minutes % 60;
+  timespent_span.innerHTML = hours + " hours " + minutes + " minutes";
+
   document.body.appendChild(container);
+
 
   // Bind event listeners inside the Shadow DOM
   shadowRoot.getElementById("continue-btn").addEventListener("click", () => {
@@ -51,12 +64,11 @@ async function insert_overlay() {
   });
 }
 
-let overlay_insert_ts = 0;
 const observer = new MutationObserver((mutations, obs) => {
   const target = document.querySelector('iframe'); // Observing if this element is rendered or not
   if (target) {
     insert_overlay();
-    overlay_insert_ts = new Date();
+    overlay_insert_ts = Date.now();
     obs.disconnect();
   }
 });

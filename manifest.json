@@ -5,7 +5,7 @@
   "content_scripts": [
     {
       "matches": ["https://www.youtube.com/*"],
-      "js": ["Content.js"]
+      "js": ["Content.js", "timekeeper.js"]
     }
   ],
   "web_accessible_resources":[
@@ -13,5 +13,9 @@
       "resources": ["resources/overlay.html", "resources/overlay.css"],
       "matches": ["https://www.youtube.com/*"]
     }
-  ]
+  ],
+  "permissions":["alarms", "storage"],
+  "background": {
+      "service_worker": "background.js"
+    }
 }
