@@ -14,7 +14,7 @@
       "matches": ["https://www.youtube.com/*"]
     }
   ],
-  "permissions":["alarms", "storage"],
+  "permissions":["storage"],
   "background": {
       "service_worker": "background.js"
     }

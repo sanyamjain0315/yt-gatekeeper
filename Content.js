@@ -1,5 +1,4 @@
 let overlay_insert_ts = null;
-console.log("Content.js");
 
 async function insert_overlay() {
   // Get HTML file URLs
