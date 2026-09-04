@@ -1,17 +1,16 @@
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-  console.log("received event")
   if (message.type === "ACTIVE_SECONDS") {
     processActiveSeconds(message.seconds);
   } else if (message.type === "RESET_TIME") {
     processResetTime(message.seconds);
   }
-})
+});
 
 async function processActiveSeconds(additionalSeconds) {
   const data = await chrome.storage.local.get({
     pendingSeconds: 0,
-    minutes: 0
-  })
+    minutes: 0,
+  });
 
   let totalPending = data.pendingSeconds + additionalSeconds;
   let newMinutes = data.minutes;
@@ -24,14 +23,14 @@ async function processActiveSeconds(additionalSeconds) {
 
   await chrome.storage.local.set({
     pendingSeconds: totalPending,
-    minutes: newMinutes
+    minutes: newMinutes,
   });
 }
 
 async function processResetTime(remainingSeconds) {
   await chrome.storage.local.set({
     pendingSeconds: 0,
-    minutes: 0
+    minutes: 0,
   });
-  processActiveSeconds(remainingSeconds)
+  processActiveSeconds(remainingSeconds);
 }

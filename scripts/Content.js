@@ -8,7 +8,7 @@ async function insert_overlay() {
   // Fetch the files in parallel
   const [htmlText, cssText] = await Promise.all([
     fetch(htmlUrl).then((res) => res.text()),
-    fetch(cssUrl).then((res) => res.text())
+    fetch(cssUrl).then((res) => res.text()),
   ]);
 
   // Create container element
@@ -26,15 +26,12 @@ async function insert_overlay() {
 
   // Update the time spent
   let timespent_span = shadowRoot.getElementById("time-spent");
-  // console.log("Contents.js: getting minutes")
   let response = await chrome.storage.local.get({ minutes: 0 });
-  // console.log("Contents.js: got minutes " + response )
   const hours = Math.floor(response.minutes / 60);
   const minutes = response.minutes % 60;
   timespent_span.innerHTML = hours + " hours " + minutes + " minutes";
 
   document.body.appendChild(container);
-
 
   // Bind event listeners inside the Shadow DOM
   shadowRoot.getElementById("continue-btn").addEventListener("click", () => {
@@ -53,18 +50,17 @@ async function insert_overlay() {
       header_warning.removeAttribute("hidden");
       let para_warning = shadowRoot.getElementById("para-warning");
       para_warning.removeAttribute("hidden");
-      button.removeAttribute("hidden")
+      button.removeAttribute("hidden");
 
       overlay_insert_ts = new Date();
-    }
-    else {
+    } else {
       container.remove();
     }
   });
 }
 
 const observer = new MutationObserver((mutations, obs) => {
-  const target = document.querySelector('iframe'); // Observing if this element is rendered or not
+  const target = document.querySelector("iframe"); // Observing if this element is rendered or not
   if (target) {
     insert_overlay();
     overlay_insert_ts = Date.now();
@@ -74,5 +70,5 @@ const observer = new MutationObserver((mutations, obs) => {
 
 observer.observe(document.body, {
   childList: true,
-  subtree: true
-})
+  subtree: true,
+});

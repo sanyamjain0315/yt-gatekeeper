@@ -44,7 +44,9 @@
     background-color: #cc0000;
 }
 
-.fade-in-text, .fade-in-time, .fade-in-button {
+.fade-in-text,
+.fade-in-time,
+.fade-in-button {
     opacity: 0;
     animation: fadeIn 0.8s ease forwards;
 }
@@ -72,7 +74,6 @@
     opacity: 0;
     animation: fadeIn 0.8s ease forwards;
 }
-
 
 @keyframes fadeIn {
     from {
