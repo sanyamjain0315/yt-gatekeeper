@@ -7,6 +7,10 @@ This extension is available to download through the chrome web store!
 
 You can download it from the following link: [YT Gatekeeper](https://chromewebstore.google.com/detail/yt-gatekeeper/paggklmpeoleddkmffideelfdcgmcbjm?authuser=1&hl=en)
 
+## Demo
+
+<img width="1280" height="802" alt="yt-gatekeeper-demo" src="https://github.com/user-attachments/assets/d2cfe727-a6fd-4e23-b60a-270f7a4f58aa" />
+
 ## Main Features
 
 | Feature | Description |
