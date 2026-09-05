@@ -2,7 +2,10 @@
 
 YT Gatekeeper is a simple Chrome extension that monitors your daily YouTube usage and provides a persistent reminder on launch to keep your viewing time in check.
 
-This will be available on the chrome extensions store soon. Until then, follow the **Manual Installation** section down below.
+## Chrome Web Store
+This extension is available to download through the chrome web store! 
+
+You can download it from the following link: [YT Gatekeeper](https://chromewebstore.google.com/detail/yt-gatekeeper/paggklmpeoleddkmffideelfdcgmcbjm?authuser=1&hl=en)
 
 ## Main Features
 
